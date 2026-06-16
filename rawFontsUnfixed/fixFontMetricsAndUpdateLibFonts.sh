@@ -14,7 +14,8 @@
 #     because the URL encoded names are embedded in the flutter app and they can't be used on filesystem to load the fonts.
 #     (See https://github.com/timmaffett/material_symbols_icons/issues/12 )
 
-rm ../lib/fonts/*.ttf
+mkdir -p ../lib/fonts
+rm -f ../lib/fonts/*.ttf
 ttx -m 'MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf' -b --no-recalc-timestamp -o '../lib/fonts/MaterialSymbolsOutlined.ttf' good_outlined_hhea_os2_tables.ttx
 ttx -m 'MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf' -b --no-recalc-timestamp -o '../lib/fonts/MaterialSymbolsRounded.ttf' good_rounded_hhea_os2_tables.ttx
 ttx -m 'MaterialSymbolsSharp[FILL,GRAD,opsz,wght].ttf' -b --no-recalc-timestamp -o '../lib/fonts/MaterialSymbolsSharp.ttf' good_sharp_hhea_os2_tables.ttx

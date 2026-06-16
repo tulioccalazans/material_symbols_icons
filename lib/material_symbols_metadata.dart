@@ -2,7 +2,7 @@
 //
 // To edit this file modify the generator file `generator/update_package.dart` and
 // re-generate.
-// This file was generated 2026-06-16 07:40:48.353964 by the dart file
+// This file was generated 2026-06-16 07:46:26.060989 by the dart file
 // `generator/update_package.dart`.
 //
 // Copyright 2025. All rights reserved.
