@@ -22,6 +22,7 @@ e961  # twenty_three_mp
 f3f2  # twenty_four_fps_select
 e962  # twenty_four_mp
 ef37  # twod
+fff0e  # twod_2
 e963  # two_k
 e964  # two_k_plus
 e965  # two_mp
@@ -29,6 +30,7 @@ efce  # thirty_fps
 efcf  # thirty_fps_select
 e577  # threesixty
 ed38  # threed
+fff0f  # threed_2
 e84d  # threed_rotation
 efd0  # three_g_mobiledata
 f7f0  # three_g_mobiledata_badge
@@ -106,8 +108,8 @@ e729  # add_business
 f0b7  # add_call
 eb86  # add_card
 ef3c  # add_chart
-e3ba  # add_circle
-e3ba  # add_circle_outline
+e990  # add_circle
+e990  # add_circle_outline
 f425  # add_column_left
 f424  # add_column_right
 e266  # add_comment
@@ -313,7 +315,7 @@ f393  # arrows_output
 f72c  # arrows_outward
 eee3  # arrows_up_down_circle
 e060  # art_track
-ef42  # article
+ef87  # article
 f368  # article_person
 f587  # article_shortcut
 e01a  # artist
@@ -348,6 +350,7 @@ e227  # attach_money
 e2bc  # attachment
 ea52  # attractions
 efdb  # attribution
+fff03  # audio_capture
 f58c  # audio_description
 eb82  # audio_file
 f5d3  # audio_video_receiver
@@ -472,12 +475,18 @@ f301  # battery_android_share
 f300  # battery_android_shield
 f7eb  # battery_change
 f0a2  # battery_charging_20
+fff3e  # battery_charging_20_2
 f0a3  # battery_charging_30
+fff3d  # battery_charging_30_2
 f0a4  # battery_charging_50
+fff3c  # battery_charging_50_2
 f0a5  # battery_charging_60
+fff3b  # battery_charging_60_2
 f0a6  # battery_charging_80
+fff3a  # battery_charging_80_2
 f0a7  # battery_charging_90
 e1a3  # battery_charging_full
+fff39  # battery_charging_full_2
 f7ea  # battery_error
 e1a5  # battery_full
 f13b  # battery_full_alt
@@ -518,6 +527,8 @@ e828  # blanket
 efe3  # blender
 f8d6  # blind
 e286  # blinds
+fff78  # blinds_2
+fff79  # blinds_2_closed
 ec1f  # blinds_closed
 f08c  # block
 e097  # blood_pressure
@@ -539,6 +550,7 @@ f36c  # boat_railway
 e098  # body_fat
 e099  # body_system
 ea0b  # bolt
+fff6a  # bolt_boost
 f568  # bomb
 e86e  # book
 f53e  # book_2
@@ -704,6 +716,7 @@ f33b  # car_fan_mid_left
 f33a  # car_fan_mid_low_right
 f339  # car_fan_mid_right
 f338  # car_fan_recirculate
+fff40  # car_fan_recirculate_2
 f337  # car_gear
 f336  # car_lock
 f335  # car_mirror_heat
@@ -731,7 +744,7 @@ efec  # cast_for_education
 f5f0  # cast_pause
 f5ef  # cast_warning
 eab1  # castle
-e574  # category
+e72c  # category
 f437  # category_search
 ea65  # celebration
 f82e  # cell_merge
@@ -761,9 +774,9 @@ f7ac  # chat_error
 f52b  # chat_info
 f6bd  # chat_paste_go
 f3cb  # chat_paste_go_2
-e5ca  # check
+e668  # check
 fff85  # check_alert
-e834  # check_box
+e9de  # check_box
 e835  # check_box_outline_blank
 f0be  # check_circle
 f0be  # check_circle_filled
@@ -796,7 +809,7 @@ e5cb  # chevron_left
 eec3  # chevron_line_up
 e5cc  # chevron_right
 eb41  # child_care
-eb42  # child_friendly
+ef80  # child_friendly
 ef30  # child_hat
 f821  # chip_extraction
 e993  # chips
@@ -923,7 +936,7 @@ f49f  # contrast_circle
 ec72  # contrast_rtl_off
 f4a0  # contrast_square
 e074  # control_camera
-e3ba  # control_point
+e990  # control_point
 e3bb  # control_point_duplicate
 e83d  # controller_gen
 ef2f  # conversation
@@ -963,6 +976,8 @@ e588  # crib
 ebe9  # crisis_alert
 e3be  # crop
 e3bc  # crop_16_9
+fff0a  # crop_21_9
+fff0b  # crop_2_3
 e3bd  # crop_3_2
 e3bf  # crop_5_4
 e3c0  # crop_7_5
@@ -1000,6 +1015,7 @@ e99a  # dangerous
 e51c  # dark_mode
 e871  # dashboard
 f3ea  # dashboard_2
+ffee9  # dashboard_2_add
 fffd7  # dashboard_2_edit
 fffd6  # dashboard_2_gear
 e99b  # dashboard_customize
@@ -1187,7 +1203,7 @@ f523  # download_2
 f091  # download_done
 f000  # download_for_offline
 f001  # downloading
-e66d  # draft
+e674  # draft
 e7b3  # draft_orders
 e151  # drafts
 f71f  # drag_click
@@ -1204,6 +1220,7 @@ f41d  # drive_export
 e9a1  # drive_file_move
 e9a1  # drive_file_move_outline
 e9a1  # drive_file_move_rtl
+e676  # drive_file_rename
 e9a2  # drive_file_rename_outline
 e9a3  # drive_folder_upload
 e678  # drive_fusiontable
@@ -1478,7 +1495,6 @@ f397  # fit_page_height
 f396  # fit_page_width
 ea10  # fit_screen
 f779  # fit_width
-fffc5  # fitbit_raquetball
 eb43  # fitness_center
 f463  # fitness_tracker
 eef1  # fitness_trackers
@@ -1680,6 +1696,7 @@ e30f  # games
 f011  # garage
 f28d  # garage_check
 e714  # garage_door
+fff77  # garage_door_open
 e82d  # garage_home
 f28c  # garage_money
 f8a9  # garden_cart
@@ -1919,6 +1936,7 @@ f332  # hvac_max_defrost
 e50b  # ice_skating
 ea69  # icecream
 f4ca  # id_card
+ffeea  # id_card_2
 e2dd  # identity_aware_proxy
 ebb7  # identity_platform
 e025  # ifl
@@ -1926,7 +1944,7 @@ f71b  # iframe
 f71c  # iframe_off
 e3f4  # image
 f317  # image_arrow_up
-e3f5  # image_aspect_ratio
+e6a6  # image_aspect_ratio
 f247  # image_inset
 f116  # image_not_supported
 e43f  # image_search
@@ -1954,6 +1972,7 @@ e6d0  # ink_eraser
 e7e3  # ink_eraser_off
 e6d1  # ink_highlighter
 f524  # ink_highlighter_move
+fff14  # ink_highlighter_off
 e6d2  # ink_marker
 e6d3  # ink_pen
 ef52  # ink_selection
@@ -1964,7 +1983,7 @@ f0cc  # insert_chart
 f0cc  # insert_chart_filled
 f0cc  # insert_chart_outlined
 e24c  # insert_comment
-e66d  # insert_drive_file
+e674  # insert_drive_file
 ea22  # insert_emoticon
 e878  # insert_invitation
 e250  # insert_link
@@ -2001,9 +2020,9 @@ f719  # jump_to_element
 f23e  # kanji_alcohol
 e50c  # kayaking
 e842  # kebab_dining
-f026  # keep
+f027  # keep
 e6f9  # keep_off
-f026  # keep_pin
+f027  # keep_pin
 f56f  # keep_public
 e2b9  # kettle
 e73c  # key
@@ -2058,7 +2077,7 @@ f4c4  # landscape_2
 f310  # landscape_2_edit
 f4c3  # landscape_2_off
 ebd7  # landslide
-e894  # language
+ea07  # language
 f766  # language_chinese_array
 f765  # language_chinese_cangjie
 f764  # language_chinese_dayi
@@ -2106,13 +2125,16 @@ eb04  # license
 efa3  # lift_to_talk
 f02a  # light
 e28b  # light_group
+fff76  # light_group_2
 e518  # light_mode
+fff00  # light_mode_auto
 e9b8  # light_off
 e90f  # lightbulb
 f3e3  # lightbulb_2
 ebfe  # lightbulb_circle
 e90f  # lightbulb_outline
 efa4  # lightning_stand
+fff75  # lightstrip
 ea9a  # line_axis
 f757  # line_curve
 f826  # line_end
@@ -2138,9 +2160,10 @@ f535  # linked_services
 eeb2  # lips
 ea60  # liquor
 e896  # list
-e0ee  # list_alt
+e677  # list_alt
 f756  # list_alt_add
 f3de  # list_alt_check
+fff33  # list_arrow
 e9b9  # lists
 e0c6  # live_help
 e63a  # live_tv
@@ -2340,6 +2363,7 @@ f2e3  # mobile_charge
 f79f  # mobile_chat
 f073  # mobile_check
 f2e2  # mobile_code
+f2e0  # mobile_dock
 f2d0  # mobile_dots
 f073  # mobile_friendly
 f2d9  # mobile_gear
@@ -2454,8 +2478,8 @@ f711  # move_selection_up
 e168  # move_to_inbox
 eb64  # move_up
 e594  # moved_location
-e404  # movie
-e404  # movie_creation
+e684  # movie
+e684  # movie_creation
 f840  # movie_edit
 fff7d  # movie_edit_off
 e43a  # movie_filter
@@ -2614,7 +2638,7 @@ f54a  # not_accessible_forward
 f08c  # not_interested
 e575  # not_listed_location
 f0d1  # not_started
-e66d  # note
+e674  # note
 e89c  # note_add
 f040  # note_alt
 f562  # note_stack
@@ -2707,7 +2731,7 @@ f86a  # pallet
 e925  # pan_tool
 ebb9  # pan_tool_alt
 f655  # pan_zoom
-e40b  # panorama
+e691  # panorama
 e40c  # panorama_fish_eye
 e40d  # panorama_horizontal
 e9c9  # panorama_photosphere
@@ -2824,7 +2848,7 @@ f7a5  # phonelink_off
 f2e8  # phonelink_ring
 f7aa  # phonelink_ring_off
 f2d9  # phonelink_setup
-e432  # photo
+e693  # photo
 e411  # photo_album
 f530  # photo_auto_merge
 e412  # photo_camera
@@ -2834,7 +2858,7 @@ e43b  # photo_filter
 f0d9  # photo_frame
 e413  # photo_library
 efb2  # photo_prints
-e432  # photo_size_select_actual
+e693  # photo_size_select_actual
 e433  # photo_size_select_large
 e434  # photo_size_select_small
 eb8f  # php
@@ -2860,7 +2884,10 @@ f809  # pill_off
 f045  # pin
 e55e  # pin_drop
 e767  # pin_end
+fff2e  # pin_history
 e763  # pin_invoke
+fff2d  # pin_road
+ffeeb  # pin_road_2
 f3ab  # pinboard
 f3ac  # pinboard_unread
 eb38  # pinch
@@ -2938,7 +2965,7 @@ f7a1  # print_connect
 e9cf  # print_disabled
 f7a0  # print_error
 f651  # print_lock
-e19f  # priority
+efb4  # priority
 e645  # priority_high
 f148  # privacy
 f0dc  # privacy_tip
@@ -3189,7 +3216,7 @@ e623  # sd_card
 f057  # sd_card_alert
 e623  # sd_storage
 e720  # sdk
-e8b6  # search
+ef7a  # search
 f3e5  # search_activity
 f800  # search_check
 f469  # search_check_2
@@ -3285,6 +3312,8 @@ f621  # settings_video_camera
 e8c8  # settings_voice
 e2ac  # settop_component
 ebd3  # severe_cold
+fff73  # shades
+fff74  # shades_closed
 e9df  # shadow
 f584  # shadow_add
 f583  # shadow_minus
@@ -3303,11 +3332,13 @@ f703  # shelf_auto_hide
 f702  # shelf_position
 f86e  # shelves
 e9e0  # shield
+fff30  # shield_card
 f686  # shield_lock
 f592  # shield_locked
 eaa9  # shield_moon
 f650  # shield_person
 f529  # shield_question
+fff2f  # shield_radar
 f2ad  # shield_toggle
 f30f  # shield_watch
 e78f  # shield_with_heart
@@ -3430,6 +3461,7 @@ f149  # sound_detection_dog_barking
 f14a  # sound_detection_glass_break
 f14b  # sound_detection_loud_sound
 f6b4  # sound_sampler
+fff72  # soundbar
 e7d3  # soup_kitchen
 f1c8  # source
 e527  # source_environment
@@ -3447,6 +3479,7 @@ ebe8  # spatial_audio_off
 f4cf  # spatial_speaker
 ebea  # spatial_tracking
 e32d  # speaker
+fff71  # speaker_2
 e32e  # speaker_group
 e8cd  # speaker_notes
 e92a  # speaker_notes_off
@@ -3468,10 +3501,14 @@ f4e0  # speed_1_5
 f494  # speed_1_5x
 f4d1  # speed_1_75
 f493  # speed_1_7x
+fff38  # speed_2
 f4eb  # speed_2x
+fff37  # speed_3
+fff36  # speed_4
 f470  # speed_camera
 e8ce  # spellcheck
 f3bf  # split_scene
+ffef7  # split_scene_2
 f2ff  # split_scene_down
 f2fe  # split_scene_left
 f2fd  # split_scene_right
@@ -3610,6 +3647,7 @@ f355  # subtitles_gear
 ef72  # subtitles_off
 e56f  # subway
 f287  # subway_walk
+fff70  # subwoofer
 f071  # summarize
 e81a  # sunny
 e819  # sunny_snowing
@@ -3651,6 +3689,7 @@ e7e2  # switch_access_shortcut_add
 e9ed  # switch_account
 e41e  # switch_camera
 f1d1  # switch_left
+fff6f  # switch_off
 f1d2  # switch_right
 e41f  # switch_video
 e733  # switches
@@ -3795,6 +3834,8 @@ f89c  # tibia_alt
 f3c3  # tile_large
 f3c2  # tile_medium
 f3c1  # tile_small
+fff26  # tilt_arrow_down
+fff25  # tilt_arrow_up
 f0e4  # time_auto
 eff7  # time_to_leave
 e422  # timelapse
@@ -3846,6 +3887,7 @@ e199  # tornado
 f877  # total_dissolved_solids
 e913  # touch_app
 f38b  # touch_double
+fff35  # touch_double_2
 f38a  # touch_long
 f389  # touch_triple
 f687  # touchpad_mouse
@@ -3963,6 +4005,8 @@ e4fa  # usb_off
 e708  # user_attributes
 e138  # vaccines
 efc5  # vacuum
+fff6d  # vacuum_2
+fff6e  # vacuum_2_on
 e224  # valve
 ebc6  # vape_free
 ebcf  # vaping_rooms
@@ -3989,6 +4033,8 @@ f080  # video_camera_front
 f83b  # video_camera_front_off
 f8a0  # video_chat
 eb87  # video_file
+fff0d  # video_frame_copy
+fff0c  # video_frame_save
 e071  # video_label
 e04a  # video_library
 efc6  # video_search
@@ -4058,6 +4104,7 @@ f350  # vpn_lock_2
 efca  # vr180_create2d
 f571  # vr180_create2d_off
 f082  # vrpano
+fff01  # walk_bike
 efcb  # wall_art
 e2b4  # wall_lamp
 f8ff  # wallet
@@ -4076,6 +4123,7 @@ e334  # watch
 fffd1  # watch_alert
 f2ca  # watch_arrow
 fffcf  # watch_arrow_down
+fff20  # watch_button
 f6aa  # watch_button_press
 f468  # watch_check
 efd6  # watch_later
@@ -4112,11 +4160,12 @@ f07d  # wb_iridescent
 ea01  # wb_shade
 e430  # wb_sunny
 e1c6  # wb_twilight
+fff1f  # wb_twilight_2
 e63d  # wc
 f67f  # weather_hail
 f60b  # weather_mix
 e2cd  # weather_snowy
-e051  # web
+e681  # web
 e069  # web_asset
 ef47  # web_asset_off
 e595  # web_stories
@@ -4150,6 +4199,7 @@ f44c  # wifi_calling_bar_1
 f44b  # wifi_calling_bar_2
 f44a  # wifi_calling_bar_3
 eb6a  # wifi_channel
+fff34  # wifi_device
 eb31  # wifi_find
 f671  # wifi_home
 e1e1  # wifi_lock
