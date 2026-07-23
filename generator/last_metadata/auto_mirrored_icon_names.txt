@@ -180,6 +180,7 @@ shield_question
 short_text
 show_chart
 side_navigation
+single_arrow
 snowmobile
 sort
 speaker_notes

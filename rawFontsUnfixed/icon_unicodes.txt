@@ -1227,6 +1227,7 @@ e678  # drive_fusiontable
 f25a  # drone
 f259  # drone_2
 e9a4  # dropdown
+ffef0  # dropdown_menu
 f351  # dropper_eye
 f1b3  # dry
 ea58  # dry_cleaning
@@ -1382,6 +1383,7 @@ eeb3  # eyebrow
 f6ee  # eyeglasses
 f2c7  # eyeglasses_2
 f265  # eyeglasses_2_sound
+ffef1  # eyeglasses_3
 f008  # face
 f8da  # face_2
 f8db  # face_3
@@ -2010,6 +2012,7 @@ e9b5  # jamboard_kiosk
 f284  # japanese_curry
 f283  # japanese_flag
 eb7c  # javascript
+ffedb  # jewelry
 f84f  # join
 f84f  # join_full
 eaf4  # join_inner
@@ -3094,6 +3097,7 @@ f083  # report_problem
 f22c  # request_page
 f1b6  # request_quote
 f482  # reset_brightness
+ffee2  # reset_colors
 f266  # reset_exposure
 f481  # reset_focus
 f824  # reset_image
@@ -3228,8 +3232,10 @@ f331  # seat_cool_left
 f330  # seat_cool_right
 f32f  # seat_heat_left
 f32e  # seat_heat_right
+ffeda  # seat_read
 f32d  # seat_vent_left
 f32c  # seat_vent_right
+ffee1  # seat_window
 e32a  # security
 f503  # security_key
 f2cd  # security_update
@@ -3303,6 +3309,7 @@ e8c5  # settings_phone
 f834  # settings_photo_camera
 e8c6  # settings_power
 e8c7  # settings_remote
+ffedf  # settings_screen
 ef2d  # settings_seating
 f623  # settings_slow_motion
 f05e  # settings_suggest
@@ -3371,6 +3378,7 @@ f220  # sick
 e9e2  # side_navigation
 ebe5  # sign_language
 f258  # sign_language_2
+ffee4  # sign_language_off
 f0a8  # signal_cellular_0_bar
 f0a9  # signal_cellular_1_bar
 f0aa  # signal_cellular_2_bar
@@ -3440,6 +3448,7 @@ eb4a  # smoke_free
 eb4b  # smoking_rooms
 e625  # sms
 e87f  # sms_failed
+ffede  # snail
 f1c7  # snippet_folder
 e046  # snooze
 e513  # snowboarding

@@ -13,7 +13,7 @@
 // https://github.com/google/material-design-icons/raw/master/variablefont/MaterialSymbolsRounded%5BFILL%2CGRAD%2Copsz%2Cwght%5D.ttf, and
 // https://github.com/google/material-design-icons/raw/master/variablefont/MaterialSymbolsSharp%5BFILL%2CGRAD%2Copsz%2Cwght%5D.ttf
 // and added to this package.
-// This file was generated 2026-06-16 07:46:25.928241 by the dart file
+// This file was generated 2026-07-23 07:36:58.251683 by the dart file
 // `generator/update_package.dart`.
 //
 // Copyright 2024. All rights reserved.
@@ -1323,6 +1323,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'drone': 0xf25a,
   'drone_2': 0xf259,
   'dropdown': 0xe9a4,
+  'dropdown_menu': 0xffef0,
   'dropper_eye': 0xf351,
   'dry': 0xf1b3,
   'dry_cleaning': 0xea58,
@@ -1478,6 +1479,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'eyeglasses': 0xf6ee,
   'eyeglasses_2': 0xf2c7,
   'eyeglasses_2_sound': 0xf265,
+  'eyeglasses_3': 0xffef1,
   'face': 0xf008,
   'face_2': 0xf8da,
   'face_3': 0xf8db,
@@ -2106,6 +2108,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'japanese_curry': 0xf284,
   'japanese_flag': 0xf283,
   'javascript': 0xeb7c,
+  'jewelry': 0xffedb,
   'join': 0xf84f,
   'join_full': 0xf84f,
   'join_inner': 0xeaf4,
@@ -3190,6 +3193,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'request_page': 0xf22c,
   'request_quote': 0xf1b6,
   'reset_brightness': 0xf482,
+  'reset_colors': 0xffee2,
   'reset_exposure': 0xf266,
   'reset_focus': 0xf481,
   'reset_image': 0xf824,
@@ -3324,8 +3328,10 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'seat_cool_right': 0xf330,
   'seat_heat_left': 0xf32f,
   'seat_heat_right': 0xf32e,
+  'seat_read': 0xffeda,
   'seat_vent_left': 0xf32d,
   'seat_vent_right': 0xf32c,
+  'seat_window': 0xffee1,
   'security': 0xe32a,
   'security_key': 0xf503,
   'security_update': 0xf2cd,
@@ -3399,6 +3405,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'settings_photo_camera': 0xf834,
   'settings_power': 0xe8c6,
   'settings_remote': 0xe8c7,
+  'settings_screen': 0xffedf,
   'settings_seating': 0xef2d,
   'settings_slow_motion': 0xf623,
   'settings_suggest': 0xf05e,
@@ -3467,6 +3474,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'side_navigation': 0xe9e2,
   'sign_language': 0xebe5,
   'sign_language_2': 0xf258,
+  'sign_language_off': 0xffee4,
   'signal_cellular_0_bar': 0xf0a8,
   'signal_cellular_1_bar': 0xf0a9,
   'signal_cellular_2_bar': 0xf0aa,
@@ -3536,6 +3544,7 @@ Map<String, int> materialSymbolsIconNameToUnicodeMap = {
   'smoking_rooms': 0xeb4b,
   'sms': 0xe625,
   'sms_failed': 0xe87f,
+  'snail': 0xffede,
   'snippet_folder': 0xf1c7,
   'snooze': 0xe046,
   'snowboarding': 0xe513,

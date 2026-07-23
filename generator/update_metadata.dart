@@ -33,7 +33,28 @@ typedef Fetch = ({String iconName, String srcUrl, String destFile});
 
 Map<String, String> renamedIconNames = {};
 Set<String> autoMirroredIconNames = <String>{};
+Set<String> examinedIconNames = <String>{};
 Set<String> fromExistingJsonMetaData_AutoMirroredIconNames = <String>{};
+
+/// Merges the previous run's auto-mirrored icon list with this run's
+/// detections.  Icons examined this run use the fresh detection result
+/// (so an icon CAN lose its auto-mirrored status if Google removes it);
+/// icons NOT examined this run carry their previous status forward
+/// (incremental runs only fetch/examine changed icons).  Icons no longer
+/// present in the current icon set are dropped.
+Set<String> mergeAutoMirroredIconNames({
+  required Set<String> previous,
+  required Set<String> examined,
+  required Set<String> detected,
+  required Set<String> currentIconNames,
+}) {
+  final merged = <String>{
+    ...previous.where((name) => !examined.contains(name)),
+    ...detected,
+  };
+  merged.retainWhere(currentIconNames.contains);
+  return merged;
+}
 
 // Define asset lists.
 List<Asset> _ICON_ASSETS = [
@@ -321,6 +342,10 @@ Future<void> _doFetch(String iconName, String srcUrl, String destFile) async {
       throw Exception('Failed to fetch $srcUrl: ${response.statusCode}');
     }
 
+    // This icon's XML was successfully retrieved and will be examined, so its
+    // auto-mirrored status from this run is authoritative.
+    examinedIconNames.add(iconName);
+
     if (DEBUG) {
       if(writeFetchedFilesToDisk) {
         print('Fetching $srcUrl and going to write to $destFile');
@@ -492,6 +517,7 @@ Future<void> _processSkips(List<Fetch> skips) async {
     }
     try {
       final bytes = await file.readAsBytes();
+      examinedIconNames.add(skip.iconName);
       if (containsAutoMirrored(bytes)) {
         if(DEBUG) print('RTL auto-mirroring detected in existing file for `${skip.iconName}`');
         autoMirroredIconNames.add(skip.iconName);
@@ -659,20 +685,14 @@ Future<void> main(List<String> args) async {
   }
 
   print(
-      '${autoMirroredIconNames.length} Auto-mirrored icon${(autoMirroredIconNames.length > 1) ? 's' : ''}.'
+      '${autoMirroredIconNames.length} auto-mirrored icon${(autoMirroredIconNames.length == 1) ? '' : 's'} detected among the ${examinedIconNames.length} icon${(examinedIconNames.length == 1) ? '' : 's'} examined this run.'
           .orange);
   if (autoMirroredIconNames.isNotEmpty) {
     print(
-        'Auto-mirrored icon name${(autoMirroredIconNames.length > 1) ? 's' : ''}: ${autoMirroredIconNames.join(", ").purple}'
+        'Detected auto-mirrored icon name${(autoMirroredIconNames.length == 1) ? '' : 's'}: ${autoMirroredIconNames.join(", ").purple}'
             .orange);
-  } else {
-    print('No auto-mirrored icon names found.'.brightRed);
-    print("There has to be mirrored icons in the set.  Exiting.  RE-RUN with --overwrite flag so that all SVG XML files are re-retrieved and examined".brightRed);
-    exit(1);
   }
 
-
-  /*now write this list to a file so we STORE THE LAST LIST */
   final autoMirroredFile = File(path.join(
       Directory.current.path,
       "last_metadata", // DO NOT GO UP "../..",
@@ -686,31 +706,17 @@ Future<void> main(List<String> args) async {
       "last_metadata",
       "automirrored_$dateSuffix.txt"));
 
-  /* first read in the LAST file and compare */
-  await autoMirroredFile.readAsLines().then((lines) {
+  /* Read the persistent auto-mirrored list from the last run so that icons
+     NOT examined this (incremental) run carry their status forward. */
+  Set<String> previousAutoMirrored = <String>{};
+  try {
+    final lines = await autoMirroredFile.readAsLines();
     if (lines.isNotEmpty && lines[0].startsWith('\uFEFF')) {
       lines[0] = lines[0].substring(1);
     }
-    final previousSet = Set<String>.from(lines);
-    final currentSet = autoMirroredIconNames;
-
-    final added = currentSet.difference(previousSet);
-    final removed = previousSet.difference(currentSet);
-
-    if (added.isNotEmpty) {
-      print(
-          'New auto-mirrored icons added since last run: ${added.join(", ").purple}'
-              .brightGreen);
-    }
-    if (removed.isNotEmpty) {
-      print(
-          'Auto-mirrored icons removed since last run: ${removed.join(", ").purple}'
-              .brightRed);
-    }
-    if (added.isEmpty && removed.isEmpty) {
-      print('No changes in auto-mirrored icons since last run.'.gray);
-    }
-  }).catchError((e) {
+    previousAutoMirrored =
+        Set<String>.from(lines.where((line) => line.trim().isNotEmpty));
+  } catch (e) {
     print(
         'No previous auto-mirrored icon names file found or error reading it: $e'
             .brightRed);
@@ -718,12 +724,32 @@ Future<void> main(List<String> args) async {
         .yellow);
     // EXIT
     exit(1);
-  });
+  }
 
-  await autoMirroredFile.writeAsString(autoMirroredIconNames.join("\n"));
+  final currentIconNames = icons.map((icon) => icon.name).toSet();
+  final mergedAutoMirroredIconNames = mergeAutoMirroredIconNames(
+    previous: previousAutoMirrored,
+    examined: examinedIconNames,
+    detected: autoMirroredIconNames,
+    currentIconNames: currentIconNames,
+  );
+
+  compareTwoSets(previousAutoMirrored, mergedAutoMirroredIconNames);
+
+  if (mergedAutoMirroredIconNames.isEmpty) {
+    print('No auto-mirrored icon names found.'.brightRed);
+    print("There has to be mirrored icons in the set.  Exiting.  RE-RUN with --overwrite flag so that all SVG XML files are re-retrieved and examined".brightRed);
+    exit(1);
+  }
+  print(
+      '${mergedAutoMirroredIconNames.length} total auto-mirrored icons after merging with the previous run\'s list.'
+          .brightGreen);
+
+  final sortedMergedAutoMirrored = mergedAutoMirroredIconNames.toList()..sort();
+  await autoMirroredFile.writeAsString(sortedMergedAutoMirrored.join("\n"));
 
   // Also write the dated backup copy
-  await autoMirroredFileDated.writeAsString(autoMirroredIconNames.join("\n"));
+  await autoMirroredFileDated.writeAsString(sortedMergedAutoMirrored.join("\n"));
 
   /*
     Now augment the icons with the RTL (right-to-left) autoMirrored info
@@ -733,7 +759,7 @@ Future<void> main(List<String> args) async {
       {}; //Map<String, Icon>.fromIterable(icons, key: (icon) => icon.name, value: (icon) => icon);
   int rtlAutoMirroredFoundCount = 0;
   for (final icon in icons) {
-    if (autoMirroredIconNames.contains(icon.name)) {
+    if (mergedAutoMirroredIconNames.contains(icon.name)) {
       icon.rtlAutoMirrored = true;
       rtlAutoMirroredFoundCount++;
     } else {
@@ -745,11 +771,11 @@ Future<void> main(List<String> args) async {
             : icon.name] = icon; // Update the map with the icon object
   }
 
-  print('Found ${autoMirroredIconNames.length} RTL auto-mirrored icons.'.brightGreen);
+  print('Found ${mergedAutoMirroredIconNames.length} RTL auto-mirrored icons.'.brightGreen);
   print(
       'Paired Info with $rtlAutoMirroredFoundCount icons with RTL auto-mirroring.'
           .brightGreen);
-  if (autoMirroredIconNames.length != rtlAutoMirroredFoundCount) {
+  if (mergedAutoMirroredIconNames.length != rtlAutoMirroredFoundCount) {
     print(
         'WARNING: RTL auto-mirrored icon names do not match the number of icons with RTL auto-mirroring.'
             .brightRed);
@@ -834,57 +860,42 @@ Future<void> main(List<String> args) async {
     if(existingIconsMap[key] != null) {
       existingRtlAutoMirrored = existingIconsMap[key]['rtlAutoMirrored'] ?? false;
       if(existingRtlAutoMirrored) {
-        print("  EXISTING ICON IS RTL AUTOMIRRORED".brightGreen);
-        fromExistingJsonMetaData_AutoMirroredIconNames.add(key);
+        // Collect ORIGINAL icon names (not renamed map keys) so this set can
+        // be compared against the auto-mirrored name sets, which use original
+        // Google icon names.
+        fromExistingJsonMetaData_AutoMirroredIconNames.add(newIcon.name);
       }
-
-      //if(existingRtlAutoMirrored == newIcon.rtlAutoMirrored) {
-      //  print("  EXISTING ICON IS RTL AUTOMIRRORED MATCHES THE EXISTING".brightGreen);
-      //} else {
-      //  print("  EXISTING ICON DID NOT MATCH RTL AUTOMIRRORED".yellow);
-      //}
     } else {
-      print("EXISTING ICONS MAP FOR KEY "+ key.toString() + " WAS NOT FOUND IN EXISTING JSON - Only correcting new icon!!!".orange);
+      print("EXISTING ICONS MAP FOR KEY "+ key.toString() + " WAS NOT FOUND IN EXISTING JSON - new icon this version".orange);
     }
 
-
-    // COMPLETELY REPLACE the existing icon entry with the new icon data
-    existingIconsMap[key] = 
+    // COMPLETELY REPLACE the existing icon entry with the new icon data.
+    // newIcon.rtlAutoMirrored was already set from the MERGED auto-mirrored
+    // list (carrying forward icons not examined this run, using the fresh
+    // detection for icons that were), so its JSON is authoritative.
+    existingIconsMap[key] =
         json.decode(newIcon
             .toJson()); // Decode and re-encode to ensure the format is consistent.
 
-    // Make SURE WE bring any autoMirrored info forward
-    final secondCheckExistingRtlAutoMirrored = existingIconsMap[key]['rtlAutoMirrored'] ?? false;
-    if(secondCheckExistingRtlAutoMirrored != existingRtlAutoMirrored) {
-      print("  SECOND CHECK FOUND DIFFERENT RTL AUTOMIRRORED VALUE!!!".brightRed);
-    }
-    var finalAutoMirrored = existingIconsMap[key]['rtlAutoMirrored'] = existingRtlAutoMirrored || newIcon.rtlAutoMirrored;
-
-    if( finalAutoMirrored && !fromExistingJsonMetaData_AutoMirroredIconNames.contains(key) ) {
-      print("  $key ICON IS RTL AUTOMIRRORED - and was not in the fromExistingJsonMetaData_AutoMirroredIconNames list!!! ".brightGreen);
+    if (existingRtlAutoMirrored != newIcon.rtlAutoMirrored) {
+      print(
+          '  RTL auto-mirrored status changed for ${newIcon.name}: $existingRtlAutoMirrored -> ${newIcon.rtlAutoMirrored}'
+              .yellow);
     }
   });
 
-  /* Now we need to make sure that the lists for AutoMirrored icon names match */
- if (autoMirroredIconNames.length != fromExistingJsonMetaData_AutoMirroredIconNames.length) {
+  /* Report how the merged auto-mirrored set differs from what the previous
+     icons_metadata.json contained (both sets use original icon names). */
+  print(
+      '${fromExistingJsonMetaData_AutoMirroredIconNames.length} icons were marked rtlAutoMirrored in the previous icons_metadata.json.'
+          .gray);
+  if (compareTwoSets(fromExistingJsonMetaData_AutoMirroredIconNames,
+      mergedAutoMirroredIconNames,
+      label: 'vs previous icons_metadata.json')) {
     print(
-        'WARNING: Mismatch between autoMirroredIconNames (${autoMirroredIconNames.length}) and fromExistingJsonMetaData_AutoMirroredIconNames (${fromExistingJsonMetaData_AutoMirroredIconNames.length})'
-            .brightRed);
-  } else {
-    print(
-        'autoMirroredIconNames and fromExistingJsonMetaData_AutoMirroredIconNames lengths match.'
+        'Auto-mirrored icons unchanged vs previous icons_metadata.json.'
             .brightGreen);
   }
-
-  if(!compareTwoSets(autoMirroredIconNames, fromExistingJsonMetaData_AutoMirroredIconNames)) {
-    print(
-        'WARNING: Mismatch between autoMirroredIconNames and fromExistingJsonMetaData_AutoMirroredIconNames sets.'
-            .brightRed);
-  } else {
-    print(
-        'autoMirroredIconNames and fromExistingJsonMetaData_AutoMirroredIconNames sets match.'
-            .brightGreen);
-  } 
 
 
   final iconsFile = _iconsMetadataFile();
@@ -897,22 +908,22 @@ Future<void> main(List<String> args) async {
 
 
 bool
-compareTwoSets( Set<String> previousSet, Set<String> currentSet) {
+compareTwoSets( Set<String> previousSet, Set<String> currentSet, {String label = 'since last run'}) {
     final added = currentSet.difference(previousSet);
     final removed = previousSet.difference(currentSet);
 
     if (added.isNotEmpty) {
       print(
-          'New auto-mirrored icons added since last run: ${added.join(", ").purple}'
+          'New auto-mirrored icons added $label: ${added.join(", ").purple}'
               .brightGreen);
     }
     if (removed.isNotEmpty) {
       print(
-          'Auto-mirrored icons removed since last run: ${removed.join(", ").purple}'
+          'Auto-mirrored icons removed $label: ${removed.join(", ").purple}'
               .brightRed);
     }
     if (added.isEmpty && removed.isEmpty) {
-      print('No changes in auto-mirrored icons since last run.'.gray);
+      print('No changes in auto-mirrored icons $label.'.gray);
     }
     return added.isEmpty && removed.isEmpty;
 }

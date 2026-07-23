@@ -1,5 +1,25 @@
 # Changelog for Material Symbols Icons package
 
+## 4.2960.0
+
+* Update to version 2.960 of the material icons variable fonts 'released' 07/16/2026 with 4264 icons.
+* Added ffef0  # dropdown_menu, ffef1  # eyeglasses_3, ffedb  # jewelry,
+  ffee2  # reset_colors, ffeda  # seat_read, ffee1  # seat_window,
+  ffedf  # settings_screen, ffee4  # sign_language_off, ffede  # snail
+* Corrected RTL auto-mirroring (`matchTextDirection`) for 35 icons that are no longer
+  auto-mirrored in the official Material Symbols sources: battery_unknown, bike_lane,
+  branding_watermark, content_copy, content_cut, contrast, desktop_landscape,
+  desktop_landscape_add, desktop_portrait, devices_other, diagonal_line, featured_video,
+  flag (and its aliases assistant_photo, emoji_flags, flag_filled, outlined_flag),
+  float_landscape_2, float_portrait_2, grading, highlight_mouse_cursor, hotel_class,
+  line_curve, picture_in_picture, picture_in_picture_alt, picture_in_picture_large,
+  picture_in_picture_medium, picture_in_picture_mobile, picture_in_picture_small,
+  position_top_right, star_half, video_camera_back_add, videocam, view_quilt, volume_off
+* Fixed the generator's `update_metadata.dart` RTL auto-mirroring detection: incremental runs
+  now merge detection results with the previous run's list instead of overwriting it, and icons
+  can correctly lose their auto-mirrored status when Google removes it (this is what surfaced
+  the 35 icon corrections above).
+
 ## 4.2951.0
 
 * Update to version 2.951 of the material icons variable fonts 'released' 06/11/2026 with 4255 icons.
